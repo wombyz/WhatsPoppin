@@ -13,6 +13,7 @@
 		51FF7C5520BD309500ED873D /* WhatsPoppin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51FF7C5320BD309500ED873D /* WhatsPoppin.xcdatamodeld */; };
 		51FF7C5720BD309700ED873D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51FF7C5620BD309700ED873D /* Assets.xcassets */; };
 		51FF7C5A20BD309700ED873D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51FF7C5820BD309700ED873D /* LaunchScreen.storyboard */; };
+		A43E889288F5D3B4DDBCCE63 /* Pods_WhatsPoppin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC96D9420CD3030090363C09 /* Pods_WhatsPoppin.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,10 @@
 		51FF7C5620BD309700ED873D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51FF7C5920BD309700ED873D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51FF7C5B20BD309700ED873D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51FF7C6120BD30D800ED873D /* WhatsPoppin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatsPoppin.entitlements; sourceTree = "<group>"; };
+		54420957DCE5F56B7B4D208A /* Pods-WhatsPoppin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsPoppin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatsPoppin/Pods-WhatsPoppin.debug.xcconfig"; sourceTree = "<group>"; };
+		74D334A0AB1F7BF2A47F3759 /* Pods-WhatsPoppin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsPoppin.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhatsPoppin/Pods-WhatsPoppin.release.xcconfig"; sourceTree = "<group>"; };
+		CC96D9420CD3030090363C09 /* Pods_WhatsPoppin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatsPoppin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +36,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A43E889288F5D3B4DDBCCE63 /* Pods_WhatsPoppin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18B952FB594392FCDCDD7431 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC96D9420CD3030090363C09 /* Pods_WhatsPoppin.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		51FF7C4020BD309500ED873D = {
 			isa = PBXGroup;
 			children = (
 				51FF7C4B20BD309500ED873D /* WhatsPoppin */,
 				51FF7C4A20BD309500ED873D /* Products */,
+				B93D075BBF2BF075C422D49E /* Pods */,
+				18B952FB594392FCDCDD7431 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +72,7 @@
 		51FF7C4B20BD309500ED873D /* WhatsPoppin */ = {
 			isa = PBXGroup;
 			children = (
+				51FF7C6120BD30D800ED873D /* WhatsPoppin.entitlements */,
 				51FF7C4C20BD309500ED873D /* AppDelegate.swift */,
 				51FF7C4E20BD309500ED873D /* ViewController.swift */,
 				51FF7C5020BD309500ED873D /* Main.storyboard */,
@@ -67,6 +84,15 @@
 			path = WhatsPoppin;
 			sourceTree = "<group>";
 		};
+		B93D075BBF2BF075C422D49E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				54420957DCE5F56B7B4D208A /* Pods-WhatsPoppin.debug.xcconfig */,
+				74D334A0AB1F7BF2A47F3759 /* Pods-WhatsPoppin.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +100,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 51FF7C5E20BD309700ED873D /* Build configuration list for PBXNativeTarget "WhatsPoppin" */;
 			buildPhases = (
+				1BF8A66E6A6A906DF0B5B15F /* [CP] Check Pods Manifest.lock */,
 				51FF7C4520BD309500ED873D /* Sources */,
 				51FF7C4620BD309500ED873D /* Frameworks */,
 				51FF7C4720BD309500ED873D /* Resources */,
+				F3301036112CB05D05A8713F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -99,6 +127,11 @@
 				TargetAttributes = {
 					51FF7C4820BD309500ED873D = {
 						CreatedOnToolsVersion = 9.3.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -132,6 +165,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1BF8A66E6A6A906DF0B5B15F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WhatsPoppin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3301036112CB05D05A8713F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WhatsPoppin/Pods-WhatsPoppin-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhatsPoppin/Pods-WhatsPoppin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		51FF7C4520BD309500ED873D /* Sources */ = {
@@ -282,8 +366,10 @@
 		};
 		51FF7C5F20BD309700ED873D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54420957DCE5F56B7B4D208A /* Pods-WhatsPoppin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WhatsPoppin/WhatsPoppin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 58NS7395R7;
 				INFOPLIST_FILE = WhatsPoppin/Info.plist;
@@ -300,8 +386,10 @@
 		};
 		51FF7C6020BD309700ED873D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74D334A0AB1F7BF2A47F3759 /* Pods-WhatsPoppin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WhatsPoppin/WhatsPoppin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 58NS7395R7;
 				INFOPLIST_FILE = WhatsPoppin/Info.plist;
