@@ -24,6 +24,12 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Need to know where you are!</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Need to know where you are!</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Need to know where you are!</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -41,27 +47,25 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>fb2157599037802677</string>
-            </array>
-        </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>2157599037802677</string>
-    <key>FacebookDisplayName</key>
-    <string>WhatsPoppin</string>
-    
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-share-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb2157599037802677</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>2157599037802677</string>
+	<key>FacebookDisplayName</key>
+	<string>WhatsPoppin</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 </dict>
 </plist>

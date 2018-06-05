@@ -8,16 +8,34 @@
 
 import UIKit
 import CoreData
+import Firebase
+import FirebaseAuth
+import FacebookCore
+
+var fbAccessToken: AccessToken?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        
+        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        fbAccessToken = AccessToken.current
+        
         return true
+    }
+    
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
+        -> Bool {
+            
+            let handled: Bool = SDKApplicationDelegate.shared.application(application, open: url,  options: options)
+            
+            return handled
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

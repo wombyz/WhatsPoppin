@@ -150,6 +150,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework"
@@ -159,6 +163,10 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
