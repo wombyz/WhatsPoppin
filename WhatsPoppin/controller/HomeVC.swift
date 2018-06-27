@@ -24,6 +24,8 @@ class HomeVC: UIViewController, MKMapViewDelegate {
     var mapHasCenteredOnce = false
     var regionRadius: CLLocationDistance = 1000
     var selectedPin:MKPlacemark? = nil
+    var resultSearchController:UISearchController? = nil
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +36,18 @@ class HomeVC: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         mapView.userTrackingMode = MKUserTrackingMode.follow
         centerMapOnUserLocation()
-//        let locationSearchTable = LocationSearchTable()
-//        locationSearchTable.handleMapSearchDelegate = self
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search For Party Address"
+        navigationItem.titleView = resultSearchController?.searchBar
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        locationSearchTable.mapView = mapView
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {

@@ -42,10 +42,6 @@ class LocationSearchTable : UITableViewController {
 
 extension LocationSearchTable : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-    
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
         guard let mapView = mapView,
             let searchBarText = searchController.searchBar.text else { return }
         

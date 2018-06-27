@@ -57,23 +57,6 @@ class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         suburbLbl.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(CreateEventVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(CreateEventVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
-        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
-        resultSearchController?.searchResultsUpdater = locationSearchTable
-        let searchBar = resultSearchController!.searchBar
-        searchBar.sizeToFit()
-        searchBar.placeholder = "Search For Party Address"
-        navigationItem.titleView = resultSearchController?.searchBar
-        resultSearchController?.hidesNavigationBarDuringPresentation = false
-        resultSearchController?.dimsBackgroundDuringPresentation = true
-        definesPresentationContext = true
-        locationSearchTable.mapView = passedMapView
-        if locationSearchTable.mapView == nil {
-            print("nothing bruv")
-        } else {
-            print("working")
-        }
-        print("passedMapView")
         
     }
     
