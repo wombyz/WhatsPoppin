@@ -33,5 +33,9 @@ class DataService {
     func updateCurrentUser(uid: String, userData: Dictionary<String, Any>) {
         REF_USERS.child(uid).updateChildValues(userData)
     }
+    
+    func createEvent(uid: String, eventData: Dictionary<String, Any>) {
+        REF_EVENTS.child(uid).updateChildValues(eventData)
+    }
 
 }
