@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/liamottley/Desktop/dev/WhatsPoppin/Images.xcassets">
+   </FileRef>
+   <FileRef
       location = "group:WhatsPoppin.xcodeproj">
    </FileRef>
    <FileRef

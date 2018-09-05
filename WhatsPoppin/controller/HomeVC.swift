@@ -11,12 +11,13 @@ import MapKit
 import CoreLocation
 import FacebookCore
 import FacebookLogin
+import Firebase
 
 protocol HandleMapSearch {
     func dropPinZoomIn(placemark:MKPlacemark)
 }
 
-class HomeVC: UIViewController, MKMapViewDelegate {
+class HomeVC: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -24,6 +25,10 @@ class HomeVC: UIViewController, MKMapViewDelegate {
     var mapHasCenteredOnce = false
     var regionRadius: CLLocationDistance = 1000
     var selectedPin:MKPlacemark? = nil
+    var radius: CLLocationDistance = 1000
+    var cir: MKCircle!
+    var selectedAnnotation: MKAnnotation?
+    var selectedAnnotationKey: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +39,10 @@ class HomeVC: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         mapView.userTrackingMode = MKUserTrackingMode.follow
         centerMapOnUserLocation()
-//        let locationSearchTable = LocationSearchTable()
-//        locationSearchTable.handleMapSearchDelegate = self
+        
+        DataService.instance.REF_EVENTS.observe(.value, with: { (snapshot) in
+            self.loadAnnotationsFromFB()
+        })
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -76,58 +83,134 @@ class HomeVC: UIViewController, MKMapViewDelegate {
                 }
             }
         }
+        if segue.identifier == "swag" {
+            if let childVC = segue.destination as? ViewEventVC {
+                childVC.annotationKey = selectedAnnotationKey
+            }
+        }
     }
     
-//    func loadDriverAnnotationsFromFB() {
-//        DataService.instance.REF_DRIVERS.observeSingleEvent(of: .value, with: { (snapshot) in
-//            if let driverSnapshot = snapshot.children.allObjects as? [DataSnapshot] {
-//                for driver in driverSnapshot {
-//                    if driver.hasChild("userIsDriver") {
-//                        if driver.hasChild("coordinate") {
-//                            if driver.childSnapshot(forPath: "isPickupModeEnabled").value as? Bool == true {
-//                                if let driverDict = driver.value as? Dictionary<String, AnyObject> {
-//                                    //pull out value of key coordinate
-//                                    let coordinateArray = driverDict["coordinate"] as! NSArray
-//                                    let driverCoordinate = CLLocationCoordinate2D(latitude: coordinateArray[0] as! CLLocationDegrees, longitude: coordinateArray[1] as! CLLocationDegrees)
-//
-//                                    let annotation = DriverAnnotation(coordinate: driverCoordinate, withKey:  driver.key)
-//                                    self.mapView.addAnnotation(annotation)
-//
-//                                    var driverIsVisible: Bool {
-//                                        return self.mapView.annotations.contains(where: { (annotation) -> Bool in
-//                                            if let driverAnnotation = annotation as? DriverAnnotation {
-//                                                if driverAnnotation.key == driver.key {
-//                                                    driverAnnotation.update(annotationPosition: driverAnnotation, withCoordinate: driverCoordinate)
-//                                                    return true
-//                                                }
-//                                            }
-//                                            return false
-//                                        })
-//                                    }
-//
-//                                    if !driverIsVisible {
-//                                        self.mapView.addAnnotation(annotation)
-//                                    }
-//                                }
-//                            } else {
-//                                for annotation in self.mapView.annotations {
-//                                    if annotation.isKind(of: DriverAnnotation.self) {
-//                                        if let annotation = annotation as? DriverAnnotation {
-//                                            if annotation.key == driver.key {
-//                                                self.mapView.removeAnnotation(annotation)
-//                                            }
-//                                        }
-//                                    }
-//
-//                                }
-//                            }
-//                        }
-//
-//                    }
-//                }
-//            }
-//        })
-//    }
+    func loadAnnotationsFromFB() {
+        DataService.instance.REF_EVENTS.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let eventSnapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                for event in eventSnapshot {
+                        if event.hasChild("coordinate") {
+                            print("found child")
+                            if event.childSnapshot(forPath: "eventIsPublic").value as? Bool == true {
+                                if let eventDict = event.value as? Dictionary<String, AnyObject> {
+                                    print("eventDict Found")
+                                    //pull out value of key coordinate
+                                    let coordinateArray = eventDict["coordinate"] as! NSArray
+                                    let eventCoordinate = CLLocationCoordinate2D(latitude: coordinateArray[0] as! CLLocationDegrees, longitude: coordinateArray[1] as! CLLocationDegrees)
+                                    print(eventCoordinate)
+                                    let annotation = EventAnnotation(coordinate: eventCoordinate,  withKey:  event.key)
+                                    self.cir = MKCircle(center: eventCoordinate, radius: self.radius)
+                                    self.mapView.add(self.cir)
+                                    self.mapView.addAnnotation(annotation)
+                                    print("added to map in load func")
+                                }
+                            } else {
+                                for annotation in self.mapView.annotations {
+                                    if annotation.isKind(of: EventAnnotation.self) {
+                                        if let annotation = annotation as? EventAnnotation {
+                                            if annotation.key == event.key {
+                                                self.mapView.removeAnnotation(annotation)
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    }
+    
+    func searchForEvent(latitude: CLLocationDegrees, longitude: CLLocationDegrees , completion:@escaping(_ str:String?) -> Void ) {
+        var eventCoordinate: CLLocationCoordinate2D?
+        var eventKey: String?
+        var selectedEventKey = ""
+        DataService.instance.REF_EVENTS.observeSingleEvent(of: .value, with: { (snapshot) in
+            print("1")
+            if let eventSnapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                for event in eventSnapshot {
+                    eventKey = event.key
+                    print("\(eventKey)")
+                    print("2")
+                    if event.childSnapshot(forPath: "coordinate").value != nil  {
+                        if let eventDict = event.value as? Dictionary<String, AnyObject> {
+                            print("3")
+                            //pull out value of key coordinate
+                            let coordinateArray = eventDict["coordinate"] as! NSArray
+                            print(coordinateArray)
+                            eventCoordinate = CLLocationCoordinate2D(latitude: coordinateArray[0] as! CLLocationDegrees, longitude: coordinateArray[1] as! CLLocationDegrees)
+                            print(eventCoordinate)
+                            if (eventCoordinate?.latitude, eventCoordinate?.longitude) == (latitude, longitude) {
+                                selectedEventKey = eventKey!
+                                print("\(selectedEventKey), correct event")
+                                completion(selectedEventKey)
+                            } else {
+                                print("incorrect event")
+                                completion(nil)
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    }
+
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("selected")
+        var selected = ""
+        self.selectedAnnotation = view.annotation
+        let lat = selectedAnnotation?.coordinate.latitude
+        let lon = selectedAnnotation?.coordinate.longitude
+        
+//        searchForEvent(latitude: lat!, longitude: lon!) { (str) in
+//            selected = str!
+//        }
+//        selectedAnnotationKey = selected
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "event"
+        if let annotation = annotation as? EventAnnotation {
+            var view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            annotation.title = "Event"
+            annotation.subtitle = "18th May"
+            view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view?.rightCalloutAccessoryView = UIButton(type: .infoLight)
+            view?.canShowCallout = true
+            
+            let pinImage = UIImage(named: "hat")
+            let size = CGSize(width: 50, height: 50)
+            UIGraphicsBeginImageContext(size)
+            pinImage!.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+            let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+            
+            view?.image = resizedImage
+
+            return view
+        }
+        return nil
+    }
+    
+    func mapView(_ mapView: MKMapView!, rendererFor overlay: MKOverlay!) -> MKOverlayRenderer! {
+        let overlayRenderer : MKCircleRenderer = MKCircleRenderer(overlay: overlay)
+        overlayRenderer.lineWidth = 1.0
+        overlayRenderer.fillColor = UIColor.init(red: 35/255, green: 127/255, blue: 255/255, alpha: 0.4)
+        return overlayRenderer
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            performSegue(withIdentifier: "swag", sender: self)
+        }
+    }
+    
 }
 
 extension HomeVC: CLLocationManagerDelegate {
@@ -151,22 +234,6 @@ extension HomeVC: CLLocationManagerDelegate {
     }
 }
 
-extension HomeVC: HandleMapSearch {
-    func dropPinZoomIn(placemark:MKPlacemark){
-        // cache the pin
-        selectedPin = placemark
-        // clear existing pins
-        mapView.removeAnnotations(mapView.annotations)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = placemark.coordinate
-        annotation.title = placemark.name
-        if let city = placemark.locality,
-            let state = placemark.administrativeArea {
-            annotation.subtitle = "(city) (state)"
-        }
-        mapView.addAnnotation(annotation)
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-        let region = MKCoordinateRegionMake(placemark.coordinate, span)
-        mapView.setRegion(region, animated: true)
-    }
+extension HomeVC: MKMapViewDelegate {
 }
+

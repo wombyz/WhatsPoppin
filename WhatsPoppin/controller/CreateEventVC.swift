@@ -13,8 +13,9 @@ import NotificationCenter
 import CoreLocation
 import Firebase
 import MapKit
+import FacebookCore
 
-class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
+class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
     
 //    var Events = [Event]()
     var buttonPressed = false
@@ -24,8 +25,9 @@ class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
     var coord: CLLocationCoordinate2D!
     var tableView = UITableView()
     var resultSearchController:UISearchController? = nil
-    
+    var userAddress: String! = nil
     var passedMapView: MKMapView! = nil
+    let locationManager = CLLocationManager()
     
     @IBOutlet weak var typePicker: UIPickerView!
     @IBOutlet weak var eventNameLbl: UITextView!
@@ -68,13 +70,7 @@ class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
         locationSearchTable.mapView = passedMapView
-        if locationSearchTable.mapView == nil {
-            print("nothing bruv")
-        } else {
-            print("working")
-        }
-        print("passedMapView")
-        
+        locationSearchTable.textField = addressLbl
     }
     
     func hideOrRemoveFieldsForPickerView() {
@@ -107,7 +103,6 @@ class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
             address.isHidden = false
             
         }
-        
     }
     
     @IBAction func genTypePickerBtnPressed(sender: AnyObject) {
@@ -216,9 +211,9 @@ class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
+//            if self.view.frame.origin.y == 0{
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
         }
     }
     
@@ -231,104 +226,40 @@ class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         self.view.frame.origin.y = 0
     }
     
-
     @IBAction func createBtnPressed(_ sender: UIButton){
+        var addressCoordinate: String!
         let uuid = UUID().uuidString
         print(uuid)
-        let eventData = ["creator": Auth.auth().currentUser?.uid, "title": eventNameLbl.text, "description": descLbl.text, "suburb": suburbLbl.text, "eventType": eventTypeBtn.title(for: .normal), "gender": genderBtn.title(for: .normal)] as [String: Any]
+        userAddress = addressLbl.text
         
-        DataService.instance.createEvent(uid: uuid, eventData: eventData)
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(userAddress) { (placemarks, error) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+                else {
+                    print(error as Any)
+                    return
+            }
+            print("location below")
+            print(location)
+            
+            let coordinate = location.coordinate
+            
+            let eventData = ["creator": AccessToken.current?.userId, "title": self.eventNameLbl.text, "description": self.descLbl.text, "suburb": self.suburbLbl.text, "eventType": self.eventTypeBtn.title(for: .normal), "gender": self.genderBtn.title(for: .normal), "address": self.addressLbl.text, "eventIsPublic": true, "uid": "\(uuid)"] as [String: Any]
+                
+                DataService.instance.createEvent(uid: uuid, eventData: eventData)
+                DataService.instance.REF_EVENTS.child(uuid).updateChildValues(["coordinate": [coordinate.latitude, coordinate.longitude]])
+//
+//            } else {
+//                print("no location...")
+            }
         
+        dismiss(animated: true, completion: nil)
         //image???
     }
-}
-
     
-//    func performSearch() {
-//        matchingItems.removeAll()
-//        let request = MKLocalSearchRequest()
-//        request.naturalLanguageQuery = destinationTextField.text
-//        request.region = mapView.region
-//        //pass search in
-//        let search = MKLocalSearch(request: request)
-//
-//        search.start { (response, error) in
-//            if error != nil {
-//                self.showAlert("An error occurred please try again")
-//            } else if response!.mapItems.count == 0 {
-//                self.showAlert("no results, please search again for a different location!")
-//            } else {
-//                for mapItem in response!.mapItems {
-//                    self.matchingItems.append(mapItem as MKMapItem)
-//                    self.tableView.reloadData()
-//                    self.shouldPresentLoadingView(false)
-//                }
-//            }
-//        }
-//    }
-//}
-//
-//extension CreateEventVC: UITextFieldDelegate {
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//
-//        if textField == destinationTextField {
-//
-//            tableView.frame = CGRect(x: 20, y: view.frame.height, width: view.frame.width - 40, height: view.frame.height - 170)
-//            tableView.layer.cornerRadius = 5.0
-//            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "loactionCell")
-//
-//            tableView.delegate = self
-//            tableView.dataSource = self
-//
-//            tableView.tag = 18
-//            tableView.rowHeight = 60
-//
-//            view.addSubview(tableView)
-//            animateTableView(shouldShow: true)
-//
-//            UIView.animate(withDuration: 0.2, animations: {
-//                self.destinationCircle.backgroundColor = UIColor.red
-//                self.destinationCircle.borderColor = UIColor.init(red: 199/255, green: 0/255, blue: 0/255, alpha: 1.0)
-//            })
-//        }
-//}
-//
-//extension CreateEventVC: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "locationCell")
-//        let mapItem = matchingItems[indexPath.row]
-//        cell.textLabel?.text = mapItem.name
-//        cell.detailTextLabel?.text = mapItem.placemark.title
-//        return cell
-//    }
-//
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return matchingItems.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        shouldPresentLoadingView(true)
-//
-//        let passenegerCoordinate = manager?.location?.coordinate
-//
-//        let passengerAnnotation = PassengerAnnotation(coordinate: passenegerCoordinate!, key: (currentUserId)
-//            mapView.addAnnotation(passengerAnnotation)
-//
-//            destinationTextField.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
-//
-//        let selectedMapItem = matchingItems[indexPath.row]
-//
-//        DataService.instance.REF_USERS.child(currentUserId!).updateChildValues(["tripCoordinate": [selectedMapItem.placemark.coordinate.latitude, selectedMapItem.placemark.coordinate.longitude]])
-//
-//        dropPinFor(placemark: selectedMapItem.placemark)
-//
-//        searchMapKitForResultsWithPolyline(forMapItem: selectedMapItem)
-//
-//        animateTableView(shouldShow: false)
-//        print("selected!")
-//}
+    @IBAction func dismissCreateVC(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+}

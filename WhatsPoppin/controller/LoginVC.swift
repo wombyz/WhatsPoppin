@@ -40,8 +40,10 @@ class LoginVC: UIViewController {
                     if let user = user {
                         let userData = ["provider": user.providerID] as [String: Any]
                         print(user.uid)
+                        print("fb below")
+                        print(AccessToken.current?.userId)
                         print(Auth.auth().currentUser?.uid)
-                        DataService.instance.updateCurrentUser(uid: user.uid, userData: userData)
+                        DataService.instance.updateCurrentUser(uid: (AccessToken.current?.userId)!, userData: userData)
                     } else if let error = error {
                         print("Login error: \(error.localizedDescription)")
                         let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
