@@ -484,6 +484,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ezf-yO-gZa"/>
                     </view>
+                    <connections>
+                        <outlet property="ageRangeLbl" destination="rV1-53-8g1" id="dje-Gr-HV4"/>
+                        <outlet property="dateLbl" destination="tv3-hz-rRl" id="Oj4-2s-f1j"/>
+                        <outlet property="descriptionField" destination="0t0-v6-8zJ" id="1SU-eE-Rth"/>
+                        <outlet property="eventTypeLbl" destination="AB7-nJ-0Ra" id="x5b-c5-bOG"/>
+                        <outlet property="genderLbl" destination="5Ek-uj-NPe" id="0ll-Nw-MPv"/>
+                        <outlet property="requestBtn" destination="QUu-Yj-xNc" id="VHg-5o-aU4"/>
+                        <outlet property="suburbLbl" destination="NPP-TF-5Ol" id="Obg-rj-UXo"/>
+                        <outlet property="thumbImg" destination="Fzn-dP-6Kr" id="XPr-Ya-wRA"/>
+                        <outlet property="titleLbl" destination="AQI-OC-j9r" id="A2E-qB-h87"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUH-cw-bse" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -584,20 +595,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2K-pB-gmX">
-                                <rect key="frame" x="0.0" y="505" width="375" height="162"/>
+                                <rect key="frame" x="0.0" y="505" width="320" height="162"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="162" id="E61-AM-HiX"/>
                                 </constraints>
                             </pickerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OvF-T2-Dph">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                 <color key="backgroundColor" red="0.83137254900000002" green="0.48534514080000002" blue="0.47165984030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="vdo-2o-VZj"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4In-nf-Pyh">
-                                <rect key="frame" x="131" y="98" width="228" height="24"/>
+                                <rect key="frame" x="131" y="98" width="173" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="AmG-Dz-KdV"/>
                                 </constraints>
@@ -616,7 +627,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. 16-18" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZKz-eW-XSO">
-                                <rect key="frame" x="16" y="377" width="189" height="21"/>
+                                <rect key="frame" x="16" y="377" width="134" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="1YM-9l-HzS"/>
                                 </constraints>
@@ -625,7 +636,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPu-aX-jCM">
-                                <rect key="frame" x="14" y="226" width="343" height="120"/>
+                                <rect key="frame" x="14" y="226" width="288" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="k6d-YR-zna"/>
@@ -665,7 +676,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" text="Josh's Leaving Party" translatesAutoresizingMaskIntoConstraints="NO" id="kF4-ri-HkN">
-                                <rect key="frame" x="126" y="123" width="233" height="75"/>
+                                <rect key="frame" x="126" y="123" width="178" height="75"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="Y0u-op-6CT"/>
@@ -686,7 +697,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. Newton" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ddy-5O-15G">
-                                <rect key="frame" x="18" y="429" width="187" height="21"/>
+                                <rect key="frame" x="18" y="429" width="132" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="5oG-HS-T7g"/>
                                 </constraints>
@@ -695,7 +706,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABh-MT-7LJ">
-                                <rect key="frame" x="220" y="406" width="86" height="22"/>
+                                <rect key="frame" x="165" y="406" width="86" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="AQX-VA-JHJ"/>
                                     <constraint firstAttribute="height" constant="22" id="QEg-Kd-yLP"/>
@@ -705,7 +716,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaE-AK-T90">
-                                <rect key="frame" x="220" y="354" width="88" height="22"/>
+                                <rect key="frame" x="165" y="354" width="88" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="3Ni-Ki-1b8"/>
                                     <constraint firstAttribute="height" constant="22" id="Gin-zP-1nJ"/>
@@ -715,7 +726,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ElU-oK-OFV" customClass="RoundedButton" customModule="WhatsPoppin" customModuleProvider="target">
-                                <rect key="frame" x="220" y="377" width="134" height="21"/>
+                                <rect key="frame" x="165" y="377" width="134" height="21"/>
                                 <color key="backgroundColor" red="0.83137254900000002" green="0.48534514080000002" blue="0.47165984030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="134" id="Md2-DN-yCb"/>
@@ -730,7 +741,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLX-Si-tIk" customClass="RoundedButton" customModule="WhatsPoppin" customModuleProvider="target">
-                                <rect key="frame" x="220" y="429" width="134" height="21"/>
+                                <rect key="frame" x="165" y="429" width="134" height="21"/>
                                 <color key="backgroundColor" red="0.83137254900000002" green="0.48534514080000002" blue="0.47165984030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Jx7-0V-tSK"/>
@@ -745,7 +756,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCs-LT-QrK" customClass="RoundedButton" customModule="WhatsPoppin" customModuleProvider="target">
-                                <rect key="frame" x="277" y="609" width="80" height="40"/>
+                                <rect key="frame" x="222" y="609" width="80" height="40"/>
                                 <color key="backgroundColor" red="0.83137254900000002" green="0.48534514080000002" blue="0.47165984030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="76S-Ar-NsP"/>
@@ -785,7 +796,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search address above" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u4a-vI-oBH">
-                                <rect key="frame" x="18" y="481" width="339" height="21"/>
+                                <rect key="frame" x="18" y="481" width="284" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="284" id="kuC-0l-HDb"/>
                                     <constraint firstAttribute="height" constant="21" id="pZg-M4-wkg"/>

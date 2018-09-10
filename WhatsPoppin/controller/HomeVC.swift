@@ -164,15 +164,15 @@ class HomeVC: UIViewController {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print("selected")
-        var selected = ""
         self.selectedAnnotation = view.annotation
-        let lat = selectedAnnotation?.coordinate.latitude
-        let lon = selectedAnnotation?.coordinate.longitude
         
-//        searchForEvent(latitude: lat!, longitude: lon!) { (str) in
-//            selected = str!
-//        }
-//        selectedAnnotationKey = selected
+        if let annotation = selectedAnnotation as? EventAnnotation {
+            let lat = annotation.coordinate.latitude
+            let lon = annotation.coordinate.longitude
+            let key = annotation.key
+            print("Heres the key \(key)")
+            self.selectedAnnotationKey = key
+        }
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

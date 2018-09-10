@@ -14,7 +14,6 @@ class EventAnnotation: NSObject, MKAnnotation {
     var key: String
     var title: String?
     var subtitle: String?
-    var uuid: UUID?
     
     init(coordinate: CLLocationCoordinate2D, withKey key: String) {
         self.coordinate = coordinate
