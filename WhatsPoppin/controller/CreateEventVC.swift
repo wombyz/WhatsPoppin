@@ -30,7 +30,7 @@ class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
     let locationManager = CLLocationManager()
     
     @IBOutlet weak var typePicker: UIPickerView!
-    @IBOutlet weak var eventNameLbl: UITextView!
+    @IBOutlet weak var eventNameLbl: UITextField!
     @IBOutlet weak var descLbl: UITextView!
     @IBOutlet weak var ageRangeLbl: UITextField!
     @IBOutlet weak var suburbLbl: UITextField!
@@ -46,6 +46,7 @@ class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
     @IBOutlet weak var thumbImg: UIImageView!
     @IBOutlet weak var addressLbl: UITextField!
     @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var dateLbl: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -246,7 +247,7 @@ class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
             
             let coordinate = location.coordinate
             
-            let eventData = ["creator": AccessToken.current?.userId, "title": self.eventNameLbl.text, "description": self.descLbl.text, "suburb": self.suburbLbl.text, "eventType": self.eventTypeBtn.title(for: .normal), "gender": self.genderBtn.title(for: .normal), "address": self.addressLbl.text, "eventIsPublic": true, "uid": "\(uuid)"] as [String: Any]
+            let eventData = ["creator": AccessToken.current?.userId, "title": self.eventNameLbl.text, "description": self.descLbl.text, "suburb": self.suburbLbl.text, "eventType": self.eventTypeBtn.title(for: .normal), "gender": self.genderBtn.title(for: .normal), "address": self.addressLbl.text, "eventIsPublic": true, "date": self.dateLbl.text] as [String: Any]
                 
                 DataService.instance.createEvent(uid: uuid, eventData: eventData)
                 DataService.instance.REF_EVENTS.child(uuid).updateChildValues(["coordinate": [coordinate.latitude, coordinate.longitude]])
