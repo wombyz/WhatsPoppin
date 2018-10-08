@@ -43,6 +43,8 @@ class HomeVC: UIViewController {
         DataService.instance.REF_EVENTS.observe(.value, with: { (snapshot) in
             self.loadAnnotationsFromFB()
         })
+        
+        FacebookService.instance.recordUserData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -58,6 +60,9 @@ class HomeVC: UIViewController {
             locationManager.requestWhenInUseAuthorization()
         }
     }
+    
+    
+    
     
     func centerMapOnUserLocation() {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(mapView.userLocation.coordinate, regionRadius * 2.0, regionRadius * 2.0)

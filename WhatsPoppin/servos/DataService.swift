@@ -37,5 +37,4 @@ class DataService {
     func createEvent(uid: String, eventData: Dictionary<String, Any>) {
         REF_EVENTS.child(uid).updateChildValues(eventData)
     }
-
 }

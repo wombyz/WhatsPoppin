@@ -8,6 +8,9 @@
 
 import UIKit
 import Firebase
+import FacebookCore
+import FacebookLogin
+import FacebookShare
 
 class ViewEventVC: UIViewController {
 
@@ -37,6 +40,9 @@ class ViewEventVC: UIViewController {
     @IBAction func dismissViewEventVC(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    
     
     func pullAndLoadEventData(eventKey: String) {
         DataService.instance.REF_EVENTS.child(eventKey).observeSingleEvent(of: .value, with: { (snapshot) in

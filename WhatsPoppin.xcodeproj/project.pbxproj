@@ -11,15 +11,20 @@
 		511ED613211D28890091D957 /* HostReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511ED612211D28890091D957 /* HostReviewVC.swift */; };
 		5128509320C9460500DA6283 /* CreateEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5128509220C9460500DA6283 /* CreateEventVC.swift */; };
 		5128509520C948A400DA6283 /* Picker Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5128509420C948A400DA6283 /* Picker Data.swift */; };
+		513C96AC2169C4CE005CE57A /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513C96AB2169C4CE005CE57A /* FacebookService.swift */; };
 		51506EE820C757B100F2164D /* TransparentNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51506EE720C757B100F2164D /* TransparentNavigationBar.swift */; };
 		51917F8A20C261FC00C781AC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51917F8920C261FC00C781AC /* HomeVC.swift */; };
 		51917F8E20C26AF000C781AC /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51917F8D20C26AF000C781AC /* DataService.swift */; };
 		51917F9020C2723A00C781AC /* UpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51917F8F20C2723A00C781AC /* UpdateService.swift */; };
 		519203B32113D1D4000BA15D /* ViewEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519203B22113D1D4000BA15D /* ViewEventVC.swift */; };
+		5193DC992169888A005933A2 /* EventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5193DC982169888A005933A2 /* EventVC.swift */; };
+		5193DC9B21698DAB005933A2 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5193DC9A21698DAB005933A2 /* EventCell.swift */; };
 		51B9EC1720D2791B00FD163B /* EventAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B9EC1620D2791B00FD163B /* EventAnnotation.swift */; };
 		51C55AD620C0BDA700A5B230 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51C55AD520C0BDA600A5B230 /* GoogleService-Info.plist */; };
 		51D7115E21408152007613A9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51D7115D21408151007613A9 /* Images.xcassets */; };
 		51D711602140817F007613A9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51D7115F2140817F007613A9 /* Images.xcassets */; };
+		51F1865F21680E2400B563E4 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F1865E21680E2400B563E4 /* ProfileVC.swift */; };
+		51F186612168B57C00B563E4 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F186602168B57C00B563E4 /* ReviewCell.swift */; };
 		51F6BC6F212510BB007AC4A6 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F6BC6E212510BB007AC4A6 /* Review.swift */; };
 		51FF7C4D20BD309500ED873D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FF7C4C20BD309500ED873D /* AppDelegate.swift */; };
 		51FF7C4F20BD309500ED873D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FF7C4E20BD309500ED873D /* LoginVC.swift */; };
@@ -34,16 +39,21 @@
 		511ED612211D28890091D957 /* HostReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostReviewVC.swift; sourceTree = "<group>"; };
 		5128509220C9460500DA6283 /* CreateEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventVC.swift; sourceTree = "<group>"; };
 		5128509420C948A400DA6283 /* Picker Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picker Data.swift"; sourceTree = "<group>"; };
+		513C96AB2169C4CE005CE57A /* FacebookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
 		51506EE720C757B100F2164D /* TransparentNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentNavigationBar.swift; sourceTree = "<group>"; };
 		51917F8920C261FC00C781AC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		51917F8B20C2638E00C781AC /* WhatsPoppin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatsPoppin.entitlements; sourceTree = "<group>"; };
 		51917F8D20C26AF000C781AC /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		51917F8F20C2723A00C781AC /* UpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateService.swift; sourceTree = "<group>"; };
 		519203B22113D1D4000BA15D /* ViewEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEventVC.swift; sourceTree = "<group>"; };
+		5193DC982169888A005933A2 /* EventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVC.swift; sourceTree = "<group>"; };
+		5193DC9A21698DAB005933A2 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		51B9EC1620D2791B00FD163B /* EventAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAnnotation.swift; sourceTree = "<group>"; };
 		51C55AD520C0BDA600A5B230 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		51D7115D21408151007613A9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		51D7115F2140817F007613A9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		51F1865E21680E2400B563E4 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		51F186602168B57C00B563E4 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReviewCell.swift; path = WhatsPoppin/model/ReviewCell.swift; sourceTree = SOURCE_ROOT; };
 		51F6BC6E212510BB007AC4A6 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		51FF7C4920BD309500ED873D /* WhatsPoppin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsPoppin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51FF7C4C20BD309500ED873D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +97,8 @@
 				5128509220C9460500DA6283 /* CreateEventVC.swift */,
 				519203B22113D1D4000BA15D /* ViewEventVC.swift */,
 				511ED612211D28890091D957 /* HostReviewVC.swift */,
+				51F1865E21680E2400B563E4 /* ProfileVC.swift */,
+				5193DC982169888A005933A2 /* EventVC.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -94,9 +106,12 @@
 		51917F8520C2619200C781AC /* model */ = {
 			isa = PBXGroup;
 			children = (
+				51F186602168B57C00B563E4 /* ReviewCell.swift */,
+				51153CC820D473DE002713BA /* LocationSearchTable.swift */,
 				51B9EC1620D2791B00FD163B /* EventAnnotation.swift */,
 				5128509420C948A400DA6283 /* Picker Data.swift */,
 				51F6BC6E212510BB007AC4A6 /* Review.swift */,
+				5193DC9A21698DAB005933A2 /* EventCell.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -105,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				51506EE720C757B100F2164D /* TransparentNavigationBar.swift */,
-				51153CC820D473DE002713BA /* LocationSearchTable.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -131,6 +145,7 @@
 			children = (
 				51917F8D20C26AF000C781AC /* DataService.swift */,
 				51917F8F20C2723A00C781AC /* UpdateService.swift */,
+				513C96AB2169C4CE005CE57A /* FacebookService.swift */,
 			);
 			path = servos;
 			sourceTree = "<group>";
@@ -321,18 +336,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51F1865F21680E2400B563E4 /* ProfileVC.swift in Sources */,
 				51917F9020C2723A00C781AC /* UpdateService.swift in Sources */,
 				51F6BC6F212510BB007AC4A6 /* Review.swift in Sources */,
 				51506EE820C757B100F2164D /* TransparentNavigationBar.swift in Sources */,
 				519203B32113D1D4000BA15D /* ViewEventVC.swift in Sources */,
+				513C96AC2169C4CE005CE57A /* FacebookService.swift in Sources */,
 				51FF7C5520BD309500ED873D /* WhatsPoppin.xcdatamodeld in Sources */,
 				51B9EC1720D2791B00FD163B /* EventAnnotation.swift in Sources */,
 				511ED613211D28890091D957 /* HostReviewVC.swift in Sources */,
 				51917F8A20C261FC00C781AC /* HomeVC.swift in Sources */,
 				51153CC920D473DE002713BA /* LocationSearchTable.swift in Sources */,
+				5193DC9B21698DAB005933A2 /* EventCell.swift in Sources */,
 				51FF7C4F20BD309500ED873D /* LoginVC.swift in Sources */,
 				5128509320C9460500DA6283 /* CreateEventVC.swift in Sources */,
 				51FF7C4D20BD309500ED873D /* AppDelegate.swift in Sources */,
+				51F186612168B57C00B563E4 /* ReviewCell.swift in Sources */,
+				5193DC992169888A005933A2 /* EventVC.swift in Sources */,
 				5128509520C948A400DA6283 /* Picker Data.swift in Sources */,
 				51917F8E20C26AF000C781AC /* DataService.swift in Sources */,
 			);
