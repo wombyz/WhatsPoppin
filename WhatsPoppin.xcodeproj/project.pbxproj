@@ -22,7 +22,6 @@
 		5193DC9B21698DAB005933A2 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5193DC9A21698DAB005933A2 /* EventCell.swift */; };
 		51B9EC1720D2791B00FD163B /* EventAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B9EC1620D2791B00FD163B /* EventAnnotation.swift */; };
 		51C55AD620C0BDA700A5B230 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51C55AD520C0BDA600A5B230 /* GoogleService-Info.plist */; };
-		51D7115E21408152007613A9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51D7115D21408151007613A9 /* Images.xcassets */; };
 		51D711602140817F007613A9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51D7115F2140817F007613A9 /* Images.xcassets */; };
 		51F1865F21680E2400B563E4 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F1865E21680E2400B563E4 /* ProfileVC.swift */; };
 		51F186612168B57C00B563E4 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F186602168B57C00B563E4 /* ReviewCell.swift */; };
@@ -232,7 +231,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Liam Ottley";
 				TargetAttributes = {
 					51FF7C4820BD309500ED873D = {
@@ -270,7 +269,6 @@
 			files = (
 				51FF7C5A20BD309700ED873D /* LaunchScreen.storyboard in Resources */,
 				51D711602140817F007613A9 /* Images.xcassets in Resources */,
-				51D7115E21408152007613A9 /* Images.xcassets in Resources */,
 				51C55AD620C0BDA700A5B230 /* GoogleService-Info.plist in Resources */,
 				51FF7C5220BD309500ED873D /* Main.storyboard in Resources */,
 			);
@@ -439,7 +437,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -493,7 +491,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
