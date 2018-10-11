@@ -15,6 +15,8 @@ import FacebookShare
 class ViewEventVC: UIViewController {
 
     var annotationKey: String!
+    var creator: String?
+    
     @IBOutlet weak var thumbImg: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
@@ -41,9 +43,6 @@ class ViewEventVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    
     func pullAndLoadEventData(eventKey: String) {
         DataService.instance.REF_EVENTS.child(eventKey).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
@@ -54,35 +53,47 @@ class ViewEventVC: UIViewController {
             var date = value?["date"] as? String
             var type = value?["eventType"] as? String
             var description = value?["description"] as? String
-            var creator = value?["creator"] as? String
+            self.creator = value?["creator"] as? String
         
             self.titleLbl.text = title
             self.genderLbl.text = gender
             self.suburbLbl.text = suburb
             self.ageRangeLbl.text = age
-            self.dateLbl.text = date
+            self.dateLbl.text = date 
             self.eventTypeLbl.text = type
             self.descriptionField.text = description
         })
     }
 
     @IBAction func requestButton(_ sender: UIButton) {
-        if let id = sender.titleLabel?.text {
-            if let url = URL(string: "fb-messenger://user-thread/\(id)") {
+
+        DataService.instance.REF_USERS.child(creator!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let creatorUsername = value?["facebookUsername"] as? String
+            if let usrnme: String = creatorUsername {
+                print(usrnme)
                 
-                // Attempt to open in Messenger App first
-                UIApplication.shared.open(url, options: [:], completionHandler: {
-                    (success) in
-                    
-                    if success == false {
-                        // Messenger is not installed. Open in browser instead.
-                        let url = URL(string: "https://m.me/\(id)")
-                        if UIApplication.shared.canOpenURL(url!) {
-                            UIApplication.shared.open(url!)
+                let urlString = ("fb-messenger://user-thread/\(String(describing: usrnme))")
+                
+                print(urlString)
+                
+                let url = URL(string: urlString)
+                print(url)
+                
+                    // Attempt to open in Messenger App first
+                UIApplication.shared.open(url!, options: [:], completionHandler: { (success) in
+                        if success == false {
+                            // Messenger is not installed. Open in browser instead.
+                            let url = URL(string: "https://m.me/\(usrnme)")
+                            if UIApplication.shared.canOpenURL(url!) {
+                                UIApplication.shared.open(url!)
+                            }
                         }
-                    }
-                })
+
+                    })
+            } else {
+                print("error in url")
             }
-        }
+        })
     }
 }

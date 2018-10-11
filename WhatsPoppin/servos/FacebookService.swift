@@ -12,7 +12,7 @@ import FacebookCore
 class FacebookService {
     static let instance = FacebookService()
 
-    let params = ["fields": "email, first_name, last_name, link, picture, name, id"]
+    let params = ["fields": "email, first_name, last_name, link, picture.type(large), name, id"]
 
     func recordUserData() {
         let graphRequest = GraphRequest(graphPath: "me", parameters: params)
@@ -26,16 +26,8 @@ class FacebookService {
             case .success(let graphResponse):
                 if let responseDictionary = graphResponse.dictionaryValue {
                     print(responseDictionary)
-
-//                    let field = responseDictionary as? [String:Any]
-//                    if let imageURL = ((field!["picture"] as? [String: Any])?["data"] as? [String: Any])?["url"] as? String {
-//                        print(imageURL)
-//                        let url = URL(string: imageURL)
-//                        let data = NSData(contentsOf: url!)
-//                        let image = UIImage(data: data! as Data)
-//                        self.profileImageView.image = image
-//                    }
-                    let link = ("facebook.com/lottoley")
+                    
+                    let link = ("facebook.com/")
                     let email = responseDictionary["email"] as! String
                     let fbId = responseDictionary["id"] as! String
                     let name = responseDictionary["name"] as! String

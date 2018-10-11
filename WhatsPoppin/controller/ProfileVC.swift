@@ -40,13 +40,27 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.facebookUsername = username as? String
             self.usernameButton.setTitle(self.facebookUsername, for: .normal)
         })
+        
+        loadProfilePic(uid: currrentUserFBID!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
  
     }
     
-    
+    func loadProfilePic(uid: String) {
+        DataService.instance.REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let picLink = value?["pictureURL"] as? String
+            if let imageURL = picLink {
+                print(imageURL)
+                let url = URL(string: imageURL)
+                let data = NSData(contentsOf: url!)
+                let image = UIImage(data: data! as Data)
+                self.profilePic.image = image
+            }
+        }
+    }
     
     
     @IBAction func usernameButtonPressed(_ sender: Any) {
