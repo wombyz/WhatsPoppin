@@ -23,6 +23,8 @@
 		51B9EC1720D2791B00FD163B /* EventAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B9EC1620D2791B00FD163B /* EventAnnotation.swift */; };
 		51C55AD620C0BDA700A5B230 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51C55AD520C0BDA600A5B230 /* GoogleService-Info.plist */; };
 		51D711602140817F007613A9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51D7115F2140817F007613A9 /* Images.xcassets */; };
+		51E47DC8216F51F000115F2F /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E47DC7216F51F000115F2F /* CircleButton.swift */; };
+		51EC4DB02171FB34000E94FB /* ReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EC4DAF2171FB34000E94FB /* ReviewVC.swift */; };
 		51F1865F21680E2400B563E4 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F1865E21680E2400B563E4 /* ProfileVC.swift */; };
 		51F186612168B57C00B563E4 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F186602168B57C00B563E4 /* ReviewCell.swift */; };
 		51F3922B216B2B2100D7C982 /* PrevEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3922A216B2B2100D7C982 /* PrevEventVC.swift */; };
@@ -54,6 +56,8 @@
 		51C55AD520C0BDA600A5B230 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		51D7115D21408151007613A9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		51D7115F2140817F007613A9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		51E47DC7216F51F000115F2F /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		51EC4DAF2171FB34000E94FB /* ReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewVC.swift; sourceTree = "<group>"; };
 		51F1865E21680E2400B563E4 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		51F186602168B57C00B563E4 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReviewCell.swift; path = WhatsPoppin/model/ReviewCell.swift; sourceTree = SOURCE_ROOT; };
 		51F3922A216B2B2100D7C982 /* PrevEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevEventVC.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 				51F1865E21680E2400B563E4 /* ProfileVC.swift */,
 				5193DC982169888A005933A2 /* EventVC.swift */,
 				51F3922A216B2B2100D7C982 /* PrevEventVC.swift */,
+				51EC4DAF2171FB34000E94FB /* ReviewVC.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			children = (
 				51506EE720C757B100F2164D /* TransparentNavigationBar.swift */,
 				518A839E216E08BD004747DF /* CircleImage.swift */,
+				51E47DC7216F51F000115F2F /* CircleButton.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -357,9 +363,11 @@
 				51FF7C4D20BD309500ED873D /* AppDelegate.swift in Sources */,
 				51F186612168B57C00B563E4 /* ReviewCell.swift in Sources */,
 				51F3922B216B2B2100D7C982 /* PrevEventVC.swift in Sources */,
+				51E47DC8216F51F000115F2F /* CircleButton.swift in Sources */,
 				518A839F216E08BD004747DF /* CircleImage.swift in Sources */,
 				5193DC992169888A005933A2 /* EventVC.swift in Sources */,
 				5128509520C948A400DA6283 /* Picker Data.swift in Sources */,
+				51EC4DB02171FB34000E94FB /* ReviewVC.swift in Sources */,
 				51917F8E20C26AF000C781AC /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
